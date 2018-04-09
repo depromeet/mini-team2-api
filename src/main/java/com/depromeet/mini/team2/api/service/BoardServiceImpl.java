@@ -46,4 +46,8 @@ public class BoardServiceImpl implements BoardService {
 		}		
 		return boardDTOs;
 	}
+	
+	public int createBoard(BoardDTO boardDTO) {
+		return boardMapper.createBoard(boardDTO.toBoard()); 
+	}
 }
