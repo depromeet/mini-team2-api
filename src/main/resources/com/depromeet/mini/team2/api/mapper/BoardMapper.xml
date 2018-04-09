@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.depromeet.mini.team2.api.mapper.BoardMapper">
+	<resultMap id="resultMap" type="com.depromeet.mini.team2.api.model.Board">
+		<result column="board_id" property="boardId" />
+		<result column="board_name" property="boardName" />
+	</resultMap>
+    <select id="findOne" resultMap="resultMap" parameterType="int">
+        SELECT * FROM `board` WHERE board_id = #{boardId}
+    </select>
+    <select id="findAll" resultMap="resultMap">
+        SELECT * FROM board
+    </select>
+</mapper>
