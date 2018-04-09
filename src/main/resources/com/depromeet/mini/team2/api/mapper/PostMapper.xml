@@ -20,4 +20,10 @@
 	    		latitude = #{post.latitude},
 	    		longitude = #{post.longitude}
     </insert>
+    <select id="findPostsByBoardId" resultMap="resultMap" parameterType="int">
+    		SELECT * FROM `post` WHERE board_id = #{boardId} 
+    </select>
+    <select id="findOne" resultMap="resultMap" parameterType="int">
+    		SELECT * FROM `post` WHERE post_id = #{postId}
+    </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.depromeet.mini.team2.api.controller;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,16 +33,19 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/api/boards/{boardId}/posts", method = RequestMethod.GET)
-	public List<String> getPosts(@PathVariable int boardId) {
-
-		return Collections.emptyList();
+	public List<PostDTO> getPosts(@PathVariable int boardId) {
+		return postService.getPostsByBoardId(boardId);
 	}
 	
 	
 	@RequestMapping(value = "/api/boards/{boardId}/posts/{postId}", method = RequestMethod.GET)
-	public String getPost(@PathVariable int boardId, @PathVariable int postId) {
-		
-		return "";
+	public PostDTO getPost(@PathVariable int boardId, @PathVariable int postId) throws Exception {
+		PostDTO postDTO = postService.getPost(postId);
+		if (Objects.isNull(postDTO)) { 
+			// TODO : custom exception return 204
+			throw new Exception("Post does not exist.");
+		}
+		return postDTO;
 	}
 
 }
