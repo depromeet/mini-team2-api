@@ -13,4 +13,9 @@
     <select id="findAll" resultMap="resultMap">
         SELECT * FROM board
     </select>
+    <insert id="createBoard" parameterType="Board">
+    		INSERT INTO `board`
+    		SET
+    		board_name=#{board.boardName}
+    </insert>
 </mapper>
