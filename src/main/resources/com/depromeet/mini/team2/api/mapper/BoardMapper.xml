@@ -13,7 +13,7 @@
     <select id="findAll" resultMap="resultMap">
         SELECT * FROM board
     </select>
-    <insert id="createBoard" parameterType="Board">
+    <insert id="createBoard" parameterType="com.depromeet.mini.team2.api.model.Board">
     		INSERT INTO `board`
     		SET
     		board_name=#{board.boardName}
