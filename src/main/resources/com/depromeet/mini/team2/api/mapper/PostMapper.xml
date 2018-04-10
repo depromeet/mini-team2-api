@@ -11,6 +11,10 @@
 		<result column="latitude" property="latitude" />
 		<result column="longitude" property="longitude" />
 		<result column="created_at" property="createdAt" />
+		<result column="opened_at" property="openedAt" />
+		<result column="closed_at" property="closedAt" />
+		<result column="phone" property="phone" />
+		<result column="nearest_exit" property="nearestExit" />
 	</resultMap>
     <insert id="createPost" parameterType="com.depromeet.mini.team2.api.model.Post">
     		INSERT INTO `post`
@@ -18,7 +22,11 @@
 	    		title = #{post.title},
 	    		content = #{post.content},
 	    		latitude = #{post.latitude},
-	    		longitude = #{post.longitude}
+	    		longitude = #{post.longitude},
+	    		opened_at = #{post.openedAt},
+	    		closed_at = #{post.closedAt},
+	    		phone = #{post.phone},
+	    		nearest_exit = #{post.nearestExit}
     </insert>
     <select id="findPostsByBoardId" resultMap="resultMap" parameterType="int">
     		SELECT * FROM `post` WHERE board_id = #{boardId} 
