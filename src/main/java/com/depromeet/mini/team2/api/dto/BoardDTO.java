@@ -16,10 +16,12 @@ import lombok.Setter;
 public class BoardDTO {
 	private int id;
 	private String name;
+	private int subwayId;
+	private String image;
 	
 	@Override
 	public String toString() {
-		return String.format("id=%d, name=%s", id, name);
+		return String.format("{id=%d,name=%s,subwayId=%d,image=%s}", id, name, subwayId, image);
 	}
 	
 	public Board toBoard() {
