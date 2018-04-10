@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.depromeet.mini.team2.api.mapper.PostMapper">
+	<resultMap id="resultMap" type="com.depromeet.mini.team2.api.model.Post">
+		<result column="post_id" property="postId" />
+		<result column="board_id" property="boardId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="latitude" property="latitude" />
+		<result column="longitude" property="longitude" />
+		<result column="created_at" property="createdAt" />
+		<result column="opened_at" property="openedAt" />
+		<result column="closed_at" property="closedAt" />
+		<result column="phone" property="phone" />
+		<result column="nearest_exit" property="nearestExit" />
+	</resultMap>
+    <insert id="createPost" parameterType="com.depromeet.mini.team2.api.model.Post">
+    		INSERT INTO `post`
+    		SET board_id = #{post.boardId},
+	    		title = #{post.title},
+	    		content = #{post.content},
+	    		latitude = #{post.latitude},
+	    		longitude = #{post.longitude},
+	    		opened_at = #{post.openedAt},
+	    		closed_at = #{post.closedAt},
+	    		phone = #{post.phone},
+	    		nearest_exit = #{post.nearestExit}
+    </insert>
+    <select id="findPostsByBoardId" resultMap="resultMap" parameterType="int">
+    		SELECT * FROM `post` WHERE board_id = #{boardId} 
+    </select>
+    <select id="findOne" resultMap="resultMap" parameterType="int">
+    		SELECT * FROM `post` WHERE post_id = #{postId}
+    </select>
+</mapper>

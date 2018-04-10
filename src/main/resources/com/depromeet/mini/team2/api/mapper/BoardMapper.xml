@@ -6,6 +6,8 @@
 	<resultMap id="resultMap" type="com.depromeet.mini.team2.api.model.Board">
 		<result column="board_id" property="boardId" />
 		<result column="board_name" property="boardName" />
+		<result column="subway_id" property="subwayId" />
+		<result column="image" property="image" />
 	</resultMap>
     <select id="findOne" resultMap="resultMap" parameterType="int">
         SELECT * FROM `board` WHERE board_id = #{boardId}
@@ -13,4 +15,11 @@
     <select id="findAll" resultMap="resultMap">
         SELECT * FROM board
     </select>
+    <insert id="createBoard" parameterType="com.depromeet.mini.team2.api.model.Board">
+    		INSERT INTO `board`
+    		SET
+    		board_name=#{board.boardName},
+    		subway_id=#{board.subwayId},
+    		image=#{board.image}
+    </insert>
 </mapper>

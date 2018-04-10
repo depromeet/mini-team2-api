@@ -11,4 +11,5 @@ import com.depromeet.mini.team2.api.model.Board;
 public interface BoardMapper {
 	Board findOne(@Param("boardId") int boardId);
 	List<Board> findAll();
+	int createBoard(@Param("board") Board board);
 }
