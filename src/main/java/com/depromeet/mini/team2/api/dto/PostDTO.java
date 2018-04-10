@@ -23,11 +23,16 @@ public class PostDTO {
 	private String latitude;
 	private String longitude;
 	private LocalDateTime createdAt;
+	private String openedAt;
+	private String closedAt;
+	private String phone;
+	private String nearestExit;
 	
 	@Override
 	public String toString() {
-		return String.format("{id=%d,boardId=%s,title=%s,content=%s,latitude=%s,longitude=%s,createdAt=%s}",
-				id, boardId, title, content, latitude, longitude, createdAt.toString());
+		return String.format("{id=%d,boardId=%s,title=%s,content=%s,latitude=%s,longitude=%s,createdAt=%s,openedAt=%s,closedAt=%s,phone=%s,nearestExit=%s}",
+				id, boardId, title, content, latitude, longitude, createdAt.toString(),
+				openedAt, closedAt, phone, nearestExit);
 	}
 	
 	public Post toPost() {
@@ -39,6 +44,10 @@ public class PostDTO {
 				.latitude(latitude)
 				.longitude(longitude)
 				.createdAt(createdAt)
+				.openedAt(openedAt)
+				.closedAt(closedAt)
+				.phone(phone)
+				.nearestExit(nearestExit)
 				.build();
 	}
 }

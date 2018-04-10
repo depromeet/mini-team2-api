@@ -34,11 +34,9 @@ public class PostServiceImpl implements PostService {
 	
 	@Override
 	public List<PostDTO> getPostsByBoardId(int boardId) {
-		List<Post> result = postMapper.findPostsByBoardId(boardId);
-		if (Objects.isNull(result)) {
-			return Collections.emptyList();
-		}
-		return result.stream()
+		return Optional.ofNullable(postMapper.findPostsByBoardId(boardId))
+				.orElse(Collections.emptyList())
+				.stream()
 				.map(Post::toPostDTO)
 				.collect(Collectors.toList());
 	}

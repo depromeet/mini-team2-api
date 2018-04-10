@@ -28,6 +28,8 @@ public class BoardDTO {
 		return Board.builder()
 				.boardId(id)
 				.boardName(name)
+				.subwayId(subwayId)
+				.image(image)
 				.build();
 	}
 }

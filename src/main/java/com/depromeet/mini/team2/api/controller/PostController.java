@@ -1,9 +1,7 @@
 package com.depromeet.mini.team2.api.controller;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
