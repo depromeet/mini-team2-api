@@ -17,11 +17,12 @@ import com.depromeet.mini.team2.api.dto.BoardDTO;
 import com.depromeet.mini.team2.api.service.BoardService;
 
 @RestController
+@RequestMapping(value = "/api")
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
-	@RequestMapping(value = "/api/boards", method = RequestMethod.POST)
+	@RequestMapping(value = "/boards", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public String createBoard(@RequestBody BoardDTO boardDTO) throws Exception {
 		if (boardService.createBoard(boardDTO) == 0) {
@@ -33,14 +34,14 @@ public class BoardController {
 		return "";
 	}
 
-	@RequestMapping(value = "/api/boards/{boardId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/boards/{boardId}", method = RequestMethod.GET)
 	public BoardDTO getBoard(@PathVariable int boardId) {
 		BoardDTO baordDTO = boardService.getBoard(boardId);
 		
 		return baordDTO;
 	}
 
-	@RequestMapping(value = "/api/boards", method = RequestMethod.GET)
+	@RequestMapping(value = "/boards", method = RequestMethod.GET)
 	public List<BoardDTO> getBoards() {
 		
 		

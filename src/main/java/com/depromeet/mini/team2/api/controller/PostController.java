@@ -19,11 +19,12 @@ import com.depromeet.mini.team2.api.service.PostService;
 
 
 @RestController
+@RequestMapping(value = "/api")
 public class PostController {
 	@Autowired
 	private PostService postService;
 
-	@RequestMapping(value = "/api/boards/{boardId}/posts", method = RequestMethod.POST)
+	@RequestMapping(value = "/boards/{boardId}/posts", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public String createPost(@RequestBody PostDTO postDTO, @PathVariable int boardId) throws Exception {
 		if (postService.createPost(postDTO, boardId) == 0) {
@@ -32,13 +33,13 @@ public class PostController {
 		return "";
 	}
 
-	@RequestMapping(value = "/api/boards/{boardId}/posts", method = RequestMethod.GET)
+	@RequestMapping(value = "/boards/{boardId}/posts", method = RequestMethod.GET)
 	public List<PostDTO> getPosts(@PathVariable int boardId) {
 		return postService.getPostsByBoardId(boardId);
 	}
 	
 	
-	@RequestMapping(value = "/api/boards/{boardId}/posts/{postId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/boards/{boardId}/posts/{postId}", method = RequestMethod.GET)
 	public PostDTO getPost(@PathVariable int boardId, @PathVariable int postId) throws Exception {
 		PostDTO postDTO = postService.getPost(postId);
 		if (Objects.isNull(postDTO)) { 

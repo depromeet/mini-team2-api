@@ -16,16 +16,21 @@ import lombok.Setter;
 public class Board {
 	private int boardId;
 	private String boardName;
+	private int subwayId;
+	private String image;
 	
 	public BoardDTO toBoardDTO() {
-		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setId(boardId);
-		boardDTO.setName(boardName);
-		return boardDTO;
+		return BoardDTO.builder()
+				.id(boardId)
+				.name(boardName)
+				.subwayId(subwayId)
+				.image(image)
+				.build();
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("boardId=%d, boardName=%s", boardId, boardName);
+		return String.format("{boardId=%d,boardName=%s,subwayId=%d,image=%s}",
+				boardId, boardName, subwayId, image);
 	}
 }
