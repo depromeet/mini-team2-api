@@ -6,12 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.depromeet.mini.team2.api.dto.BoardDTO;
 import com.depromeet.mini.team2.api.service.BoardService;
@@ -24,8 +27,8 @@ public class BoardController {
 
 	@RequestMapping(value = "/boards", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public String createBoard(@RequestBody BoardDTO boardDTO) throws Exception {
-		if (boardService.createBoard(boardDTO) == 0) {
+	public String createBoard(@ModelAttribute BoardDTO boardDTO, @RequestParam("file") MultipartFile file) throws Exception {
+		if (boardService.createBoard(boardDTO, file) == 0) {
 			// TODO:
 			// - custom exception
 			// - exception handler, controller advice
