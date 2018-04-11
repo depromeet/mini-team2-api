@@ -20,7 +20,7 @@ public class DataSourceConfiguration {
     @Bean(destroyMethod="close")
     public DataSource dataSource() {
         return DataSourceBuilder.create()
-        		.username(env.getProperty("username"))
+        		.username(env.getProperty("name"))
         		.password(env.getProperty("password"))
         		.driverClassName(env.getProperty("driver-class-name"))
         		.url(env.getProperty("url"))
