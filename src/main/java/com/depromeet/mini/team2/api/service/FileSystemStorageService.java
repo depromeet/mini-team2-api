@@ -5,9 +5,10 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,9 @@ import com.depromeet.mini.team2.api.exception.StorageFileNotFoundException;
 
 @Service
 public class FileSystemStorageService implements StorageService {
-	private final Path rootLocation = Paths.get("upload-dir");
+	@Autowired
+	private Environment env;
+	private final Path rootLocation = Paths.get(env.getProperty("YADO_IMAGE_HOME"));
 
 	@Override
 	public Path store(MultipartFile file) {
